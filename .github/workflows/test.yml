@@ -1,0 +1,20 @@
+name: Receive PR
+
+# read-only repo token
+# no access to secrets
+on:
+  - pull_request
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: |
+          echo "123" > /tmp/GOOGLEflag
+  
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr
+          path: /tmp/GOOGLEflag
+          retention-days: 1
